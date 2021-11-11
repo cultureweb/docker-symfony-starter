@@ -1,5 +1,7 @@
 # Docker - Symfony 5 starter made by Cedric Milius
 
+![screenshot](/screenshot-starter.PNG)
+
 ## Prérequis
 
 Avoir docker 😉 qui tourne sur sa machine (vm ou wsl).
