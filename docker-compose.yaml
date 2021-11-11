@@ -1,0 +1,55 @@
+version: '3'
+# do not forget the version line, this file syntax is invalid without it
+
+services:
+  apache:
+    build: php
+    container_name: www_docker_newmarket
+    ports:
+      - 8742:80
+    environment:
+      - DOCKER_DEBUG=1
+      - DOCKER_CACHE=1
+      - XDEBUG_CONFIG=${XDEBUG_CONFIG}
+    volumes:
+      - ./docker.php.settings.ini:/usr/local/etc/php/conf.d/docker.php.settings.ini
+      - ./php/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www/html
+      - /var/www/html/var
+    networks:
+      - dev
+
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin_docker_newmarket
+    restart: always
+    depends_on:
+      - db
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+    networks:
+      - dev
+
+  db:
+    image: mysql
+    container_name: db_docker_newmarket
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    networks:
+      - dev
+
+networks:
+  dev:
+
+volumes:
+  db-data:
