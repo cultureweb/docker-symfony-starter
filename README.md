@@ -16,6 +16,7 @@ Docker version 19.03.12, build 48a66213fe
 
 #### Commandes à exécuter pour démarrer :
 
+- Rename `starter` with your `project-name`
 - `docker-compose up -d` pour lancer tous les containers
 - `docker-compose exec apache bash` pour entrer en BASH dans le container
 - `composer install`
@@ -32,7 +33,7 @@ Docker version 19.03.12, build 48a66213fe
 - Run mysql> `flush privileges;`
 - Set new password by ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 
-#### Créér une base de donnée
+#### Créér une base de donnée avec la console mysql
 
 - Dupliquer le fichier .env.dist en .env
 - `php bin/console doctrine:database:create`
