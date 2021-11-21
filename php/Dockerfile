@@ -46,5 +46,6 @@ RUN yes | pecl install xdebug \
     && echo "xdebug.remote_port=9000" >> /usr/local/etc/php/conf.d/xdebug.ini \
 	&& echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini
 
+COPY xdebug_state.sh /usr/bin/xdebug_state
 
 WORKDIR /var/www/html
